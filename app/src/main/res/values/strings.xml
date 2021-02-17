@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">FullFledgedFeed_Dunets_L25_27</string>
+
+    <string name="error_posts_not_loaded">Failed to load posts</string>
+    <string name="error_mock">Mock error</string>
+
+    <string name="warning_flag">With Warning!</string>
+    <string name="author">User #%s</string>
+    <string name="user_banned">User #%s is banned</string>
+
+    <string name="new_post">New Post</string>
+    <string name="title">Title</string>
+    <string name="body">Body</string>
+    <string name="save">Save</string>
+
+    <string name="too_short_error">Too short</string>
+    <string name="too_long_error">Too long</string>
+    <string name="forbidden_words_error">Contains forbidden words</string>
+    <string name="feed_label">Feed</string>
+    <string name="new_post_label">New Post</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="create_button_vertical_margin">16dp</dimen>
+    <dimen name="post_item_container_padding">16dp</dimen>
+    <dimen name="post_item_title_text_size">24sp</dimen>
+    <dimen name="post_item_body_text_size">18sp</dimen>
+    <dimen name="post_item_user_text_size">18sp</dimen>
+    <dimen name="post_item_sections_separation">16dp</dimen>
+</resources>
