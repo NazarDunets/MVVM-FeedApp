@@ -15,7 +15,7 @@ class FeedAdapter :
     androidx.recyclerview.widget.ListAdapter<PostModelUi, RecyclerView.ViewHolder>(PostsDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
-        return if (getItem(position).isBanned) R.layout.post_banned_item
+        return if (getItem(position) is PostModelUi.BannedPostModelUi) R.layout.post_banned_item
         else R.layout.post_normal_item
     }
 
@@ -38,8 +38,8 @@ class FeedAdapter :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is PostNormalViewHolder -> holder.bind(getItem(position))
-            is BannedUserViewHolder -> holder.bind(getItem(position))
+            is PostNormalViewHolder -> holder.bind(getItem(position) as PostModelUi.NormalPostModelUi)
+            is BannedUserViewHolder -> holder.bind(getItem(position) as PostModelUi.BannedPostModelUi)
         }
     }
 
@@ -49,7 +49,7 @@ class PostNormalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val binding = PostNormalItemBinding.bind(itemView)
 
-    fun bind(post: PostModelUi) {
+    fun bind(post: PostModelUi.NormalPostModelUi) {
         binding.apply {
             tvTitle.text = post.title
             tvDescription.text = post.body
@@ -64,14 +64,14 @@ class BannedUserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val binding = PostBannedItemBinding.bind(itemView)
 
-    fun bind(post: PostModelUi) {
+    fun bind(post: PostModelUi.BannedPostModelUi) {
         binding.tvTitle.text = post.title
     }
 }
 
 class PostsDiffCallback : DiffUtil.ItemCallback<PostModelUi>() {
     override fun areItemsTheSame(oldItem: PostModelUi, newItem: PostModelUi): Boolean {
-        return oldItem == newItem
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: PostModelUi, newItem: PostModelUi): Boolean {

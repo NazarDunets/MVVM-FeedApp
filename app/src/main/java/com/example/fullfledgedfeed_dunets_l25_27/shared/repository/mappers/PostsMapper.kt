@@ -18,14 +18,15 @@ class PostsMapper @Inject constructor(
         return postsResult.mapSuccess { posts ->
             posts.map {
                 when (it.userId) {
-                    in bannedUsers -> PostModel(it.userId, "", "", UserStatus.BANNED)
+                    in bannedUsers -> PostModel(it.id, it.userId, "", "", UserStatus.BANNED)
                     in userWithWarning -> PostModel(
+                        it.id,
                         it.userId,
                         it.title,
                         it.body,
                         UserStatus.WARNING
                     )
-                    else -> PostModel(it.userId, it.title, it.body, UserStatus.NORMAL)
+                    else -> PostModel(it.id, it.userId, it.title, it.body, UserStatus.NORMAL)
                 }
             }
 
